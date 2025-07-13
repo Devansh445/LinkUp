@@ -3,7 +3,7 @@ import { axiosInstance } from "../lib/axios.js";
 import toast from "react-hot-toast";
 import { io } from "socket.io-client";
 
-const BASE_URL ="https://link-up-pi-dusky.vercel.app";
+const BASE_URL ="https://linkup-backend-zv50.onrender.com";
 
 export const useAuthStore = create((set, get) => ({
   authUser: null,
@@ -90,6 +90,8 @@ export const useAuthStore = create((set, get) => ({
       query: {
         userId: authUser._id,
       },
+      transports: ["websocket"],
+      withCredentials: true, 
     });
     socket.connect();
 
